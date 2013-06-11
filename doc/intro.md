@@ -16,33 +16,33 @@ opinions of readable will vary).
 
 
 
-# A short summary of >>
+## A short summary of >>
 
-## the following two forms are equivalent:
+### the following two forms are equivalent:
 
-###   (fn [message params {:keys [x y]}]
-     (let [z (+ x y)]
-       (println z)
-       [[:message [message params z]]
-        [:other-message [params message x y z]]
-        [:message [params message z]]]))
+`(fn [message params {:keys [x y]}]
+   (let [z (+ x y)]
+     (println z)
+     [[:message [message params z]]
+      [:other-message [params message x y z]]
+      [:message [params message z]]]))`
    
-###   (do (require '[pachinko.dataflow :as >])
-       (>/>> [message params]
-             -| x y |-
-             -= z (+ x y) =-
-             -_ (println z) _-
-             ...
-             :message [message params z]
-             :other-message [params message x y z]
-             :message [params message z]))
+`(do (require '[pachinko.dataflow :as >])
+     (>/>> [message params]
+           -| x y |-
+           -= z (+ x y) =-
+           -_ (println z) _-
+           ...
+           :message [message params z]
+           :other-message [params message x y z]
+           :message [params message z]))`
 
-reasons to use >> -
+### reasons to use >> -
 
 it simplifies conventions that are common in pachinko usage
 for some it has less visual noise and quick indications of what is being done
 
-reasons not to use >> -
+### reasons not to use >> -
 
 it doesn't look like normal clojure code
 the weird delimiter symbols are ugly
