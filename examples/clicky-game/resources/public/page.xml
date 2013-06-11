@@ -1,0 +1,11 @@
+<script type="text/javascript" src="play.js" > </script>
+<canvas id="canvas" width="700" height="700"
+	onclick="make_move(event);" align="center">
+  It seems that your browser does not support the "canvas" tag. You are either
+  using an out-dated browser, or a "modern" browser that doesn't really
+  support modern technology. Upgrade to something better is highly recommended.
+</canvas>
+<script type="text/javascript">
+  // opening elements 
+  draw_resp( [["rects", [['#000000', [0,0,700,700]]]]] );
+</script>

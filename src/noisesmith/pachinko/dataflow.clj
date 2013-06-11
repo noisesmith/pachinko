@@ -53,7 +53,6 @@
 (defn run
   "keep running a world until there are no more answers to messages
    connections are the routing of messages,
-   nodes are the binding of receivers to their implementation,
    facts are cold inputs, thing that do not trigger new output"
   [[connections-atom facts-atom :as world]
    inputs]
@@ -72,10 +71,10 @@
                 (when (and (empty? actions) (not (meta-message? message)))
                   (println "NOBODY RESPONDS TO" message)))
             reducer (reduce-actions message parameters facts-atom)
-            result (reduce reducer [] actions)]
-        (let [messages (filter first (partition 2 result))
-              new-args (apply concat result)]
-          (when messages (run world new-args))))))
+            result (reduce reducer [] actions)
+            messages (filter first (partition 2 result))
+            new-args (apply concat result)]
+        (when messages (run world new-args)))))
   world)
 
 (defn new-world
