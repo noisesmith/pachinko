@@ -1,4 +1,4 @@
-(ns pachinko.dataflow
+(ns noisesmith.pachinko.dataflow
   (:require [clojure.set :refer [union]]))
 
 (defn connect

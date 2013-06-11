@@ -1,6 +1,6 @@
 (ns pachinko.dataflow-test
   (:require [clojure.test :as test :refer :all]
-            [pachinko.dataflow :as >]))
+            [noisesmith.pachinko.dataflow :as >]))
 
 (deftest dataflow
   ;; bang triggers a

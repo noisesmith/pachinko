@@ -1,4 +1,4 @@
-(defproject pachinko "1.0"
+(defproject noisesmith.pachinko "1.0"
   :description "pachinko, a pseudo-frp library for clojure"
   :url "http://github.com/noisesmith/pachinko"
   :license {:name "Eclipse Public License"
