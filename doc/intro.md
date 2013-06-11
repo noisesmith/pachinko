@@ -20,22 +20,22 @@ opinions of readable will vary).
 
 ### the following two forms are equivalent:
 
-`(fn [message params {:keys [x y]}]
-   (let [z (+ x y)]
-     (println z)
-     [[:message [message params z]]
-      [:other-message [params message x y z]]
-      [:message [params message z]]]))`
-   
-`(do (require '[pachinko.dataflow :as >])
-     (>/>> [message params]
-           -| x y |-
-           -= z (+ x y) =-
-           -_ (println z) _-
-           ...
-           :message [message params z]
-           :other-message [params message x y z]
-           :message [params message z]))`
+      (fn [message params {:keys [x y]}]
+        (let [z (+ x y)]
+          (println z)
+          [[:message [message params z]]
+           [:other-message [params message x y z]]
+           [:message [params message z]]]))`
+        
+      (do (require '[pachinko.dataflow :as >])
+          (>/>> [message params]
+                -| x y |-
+                -= z (+ x y) =-
+                -_ (println z) _-
+                ...
+                :message [message params z]
+                :other-message [params message x y z]
+                :message [params message z]))`
 
 ### reasons to use >> -
 
