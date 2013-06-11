@@ -2,8 +2,8 @@
 
 # pachinko is a pseudo-frp library for clojure
 
-frp is functional reactive programming, a model for propagating state in a
-functional program
+frp is functional reactive programming, a model for propagating state and events
+in a functional program
 
 I say pseudo-frp because pachinko was my attempt to figure out how frp works, by
 implementing a version of it. I have no doubt that this library does not
@@ -39,11 +39,11 @@ opinions of readable will vary).
 
 ### reasons to use >> -
 
-it simplifies conventions that are common in pachinko usage
-for some it has less visual noise and quick indications of what is being done
+it simplifies conventions that are common in pachinko usage  
+for some it has less visual noise and quick indications of what is being done  
 
 ### reasons not to use >> -
 
-it doesn't look like normal clojure code
-the weird delimiter symbols are ugly
-editors don't support this custom "syntax"
+it doesn't look like normal clojure code  
+the weird delimiter symbols are ugly  
+editors don't support this custom "syntax"  
