@@ -1,6 +1,6 @@
-# Introduction to pachinko
+## Introduction to pachinko
 
-pachinko is a pseudo-frp library for clojure
+# pachinko is a pseudo-frp library for clojure
 
 frp is functional reactive programming, a model for propagating state in a
 functional program
@@ -16,18 +16,18 @@ opinions of readable will vary).
 
 
 
-A short summary of >>
+# A short summary of >>
 
-the following two forms are equivalent:
+## the following two forms are equivalent:
 
-   (fn [message params {:keys [x y]}]
+###   (fn [message params {:keys [x y]}]
      (let [z (+ x y)]
        (println z)
        [[:message [message params z]]
         [:other-message [params message x y z]]
         [:message [params message z]]]))
    
-   (do (require '[pachinko.dataflow :as >])
+###   (do (require '[pachinko.dataflow :as >])
        (>/>> [message params]
              -| x y |-
              -= z (+ x y) =-
