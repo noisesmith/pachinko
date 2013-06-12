@@ -48,6 +48,6 @@ function make_move(event)
     var y = event.clientY - bounds.top;
     var req = new XMLHttpRequest();
     req.open("POST", "/move", true);
-    req.onload = function(e) { draw_resp(JSON.parse(e.srcElement.response)); };
+    req.onload = function(e) {draw_resp(JSON.parse(e.target.responseText))};
     req.send(JSON.stringify([x,y]));
 }
