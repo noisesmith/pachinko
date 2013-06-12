@@ -37,11 +37,14 @@
 ;; TODO: define views with objects / UI, state to views, etc.!
 (defn calculate-move
   [request]
-  (let [raw-cookies (get (:headers request) "cookie")
+  (let [raw-cookies (or (get (:headers request) "cookie")
+                        (get (:headers request) "cookies"))
         cookies (when (string? raw-cookies)
                   (into {}
-                        (map (fn [[k v]] [(keyword k) v])
-                             (partition 2 (string/split raw-cookies #"=")))))
+                        (map (fn [s]
+                               (let [[k v] (string/split s #"=")]
+                                 [(keyword k) v]))
+                             (string/split raw-cookies #"; "))))
         player-id (:player-id cookies)
         player-id (or player-id (rand))
         body (:body request)

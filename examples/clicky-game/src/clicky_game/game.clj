@@ -1,6 +1,8 @@
 (ns clicky-game.game
   (:require [noisesmith.pachinko.dataflow :as >]))
 
+(def n \newline)
+
 (defn click-inside?
   [-x -y]
   (fn [[identifier [x y] [w h] & ignored]]
