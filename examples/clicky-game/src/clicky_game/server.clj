@@ -82,9 +82,9 @@
   (lamina/enqueue channel (@router request)))
 
 (defn init
-  [port]
+  [& [port]]
   (let [port (try (Integer/parseInt port)
-                  (catch Throwable t 80))]
+                  (catch Throwable t 8080))]
     (println "starting server on port" port)
     (aleph/start-http-server clicky-game {:port port})
     (nrepl/start-server)))
