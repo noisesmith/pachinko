@@ -1,3 +1,5 @@
+var context;
+
 function rectangles(rects, ctx)
 {
     for(var i=0; i < rects.length; i++)
@@ -10,17 +12,13 @@ function rectangles(rects, ctx)
     }
 }
 
-function images(images, context)
+function one_image(image)
 {
-    for( var i = 0; i < images.length; i++ )
-    {
-	var im = images[i];
-	var imageObj = new Image();
-	imageObj.onload = function() { context.drawImage(imageObj,
-							 im[0],
-							 im[1]); };
-	imageObj.src = im[2];
-    }
+    var imageObj = new Image();
+    imageObj.onload = function() { context.drawImage(imageObj,
+						     image[0],
+						     image[1]); };
+    imageObj.src = image[2];
 }
 
 function draw_resp(els)
@@ -35,7 +33,7 @@ function draw_resp(els)
 	}
 	else if (els[i][0] == "images" )
 	{
-	    images(els[i][1], context);
+	    els[i][1].forEach(one_image);
 	}
     }
 }
@@ -43,6 +41,7 @@ function draw_resp(els)
 function make_move(event)
 {
     var canvas = document.getElementById('canvas');
+    context = canvas.getContext('2d');
     var bounds = canvas.getBoundingClientRect();
     var x = event.clientX - bounds.left;
     var y = event.clientY - bounds.top;

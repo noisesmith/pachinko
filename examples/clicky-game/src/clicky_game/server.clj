@@ -53,6 +53,7 @@
         body-text (apply str (map  get-body-char (range body-size)))
         [x y] (cheshire/parse-string body-text)]
     (let [imgdata (game/run world player-id x y)]
+      (println "imgdata" imgdata)
       {:status 200
        :headers {"content-type" "application/json"
                  "Set-Cookie" (str "player-id=" player-id)}

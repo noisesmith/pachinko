@@ -7,5 +7,5 @@
 </canvas>
 <script type="text/javascript">
   // opening elements 
-  draw_resp( [["rects", [['#000000', [0,0,700,700]]]]] );
+  make_move( {clientX: -10, clientY: -10} );
 </script>
