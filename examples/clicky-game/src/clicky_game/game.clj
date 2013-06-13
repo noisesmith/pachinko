@@ -10,7 +10,7 @@
          (< y -y (+ y h))
          identifier)))
 
-(def it (comp first (partial filter identity)))
+(def it (comp first (partial filter identity) map))
 
 (defn room-image
   [room]
@@ -35,13 +35,14 @@
         -= [old-x old-y] (or (:clicked status) [0 0])
            inside? (click-inside? x y)
            room-map (get rooms room)
-           grabbed-object (it (map inside? (:objects room-map)))
+           grabbed-object (it inside? (:objects room-map))
            posessions (if grabbed-object
                         (conj posessions grabbed-object)
                         posessions)
            new-room (or (when-not grabbed-object
-                          (it (map inside? (:exits room-map))))
-                        room 1)
+                          (it inside? (:exits room-map)))
+                        room
+                        1)
            room-img (room-image new-room)
            object-images (map-indexed inventory-object-image posessions)
            images (conj object-images room-img)
